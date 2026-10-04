@@ -1,18 +1,688 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SCHOOFY LAMTIM</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SCHOOFY LAMTIM</title>
+
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+body{
+  font-family:Arial,sans-serif;
+  background:#f6f1ff;
+  color:#292333;
+  padding-bottom:85px;
+}
+
+header{
+  background:linear-gradient(135deg,#9b7bd8,#c7b2f5);
+  color:white;
+  padding:28px 20px 35px;
+  border-radius:0 0 30px 30px;
+}
+
+header h1{
+  font-size:28px;
+  margin-bottom:6px;
+}
+
+header p{
+  opacity:.9;
+  font-size:14px;
+}
+
+.container{
+  padding:18px;
+  max-width:600px;
+  margin:auto;
+}
+
+.card{
+  background:white;
+  border-radius:20px;
+  padding:18px;
+  margin-bottom:15px;
+  box-shadow:0 5px 18px rgba(80,50,120,.08);
+}
+
+.card h2{
+  font-size:18px;
+  margin-bottom:12px;
+}
+
+.welcome{
+  margin-top:-25px;
+}
+
+.stats{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px;
+}
+
+.stat{
+  background:#f1eaff;
+  padding:14px 8px;
+  border-radius:16px;
+  text-align:center;
+}
+
+.stat b{
+  display:block;
+  font-size:22px;
+  color:#8062bd;
+}
+
+.stat span{
+  font-size:11px;
+}
+
+.menu{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:12px;
+}
+
+.menu button{
+  border:0;
+  background:white;
+  border-radius:18px;
+  padding:18px 10px;
+  font-size:14px;
+  box-shadow:0 4px 15px rgba(80,50,120,.08);
+  color:#292333;
+}
+
+.menu .icon{
+  display:block;
+  font-size:28px;
+  margin-bottom:8px;
+}
+
+.page{
+  display:none;
+}
+
+.page.active{
+  display:block;
+}
+
+.task{
+  display:flex;
+  gap:10px;
+  align-items:center;
+  padding:12px 0;
+  border-bottom:1px solid #eee;
+}
+
+.task:last-child{
+  border-bottom:0;
+}
+
+.task input{
+  width:20px;
+  height:20px;
+}
+
+.small{
+  font-size:12px;
+  color:#777;
+  margin-top:4px;
+}
+
+input,select{
+  width:100%;
+  padding:13px;
+  border:1px solid #ddd;
+  border-radius:12px;
+  margin-bottom:10px;
+  font-size:14px;
+}
+
+.primary{
+  width:100%;
+  border:0;
+  padding:14px;
+  border-radius:13px;
+  background:#8d6ac7;
+  color:white;
+  font-size:15px;
+  font-weight:bold;
+}
+
+.progress{
+  height:12px;
+  background:#eee5ff;
+  border-radius:20px;
+  overflow:hidden;
+  margin-top:10px;
+}
+
+.progress div{
+  height:100%;
+  width:65%;
+  background:#9b7bd8;
+}
+
+.info{
+  background:#eee7ff;
+  padding:14px;
+  border-radius:15px;
+  margin-bottom:10px;
+}
+
+nav{
+  position:fixed;
+  bottom:0;
+  left:0;
+  right:0;
+  height:75px;
+  background:white;
+  display:flex;
+  justify-content:space-around;
+  align-items:center;
+  box-shadow:0 -3px 15px rgba(0,0,0,.08);
+  z-index:10;
+}
+
+nav button{
+  border:0;
+  background:none;
+  color:#777;
+  font-size:11px;
+}
+
+nav button.active{
+  color:#8062bd;
+  font-weight:bold;
+}
+
+nav span{
+  display:block;
+  font-size:23px;
+  margin-bottom:3px;
+}
+
+.back{
+  border:0;
+  background:none;
+  font-size:15px;
+  margin-bottom:15px;
+  color:#8062bd;
+}
+</style>
 </head>
 
 <body>
 
-  <h1>SCHOOFY LAMTIM</h1>
-
+<header>
+  <h1>🎓 SCHOOFY LAMTIM</h1>
   <p>Asisten digital pelajar Lampung Timur</p>
+</header>
 
-  <button>Mulai</button>
+<main class="container">
+
+<!-- HOME -->
+<section id="home" class="page active">
+
+<div class="card welcome">
+  <h2>Selamat datang! 👋</h2>
+  <p>Siap menjalani hari sekolahmu?</p>
+</div>
+
+<div class="card">
+  <h2>☀️ Smart Day</h2>
+
+  <div class="stats">
+    <div class="stat">
+      <b>3</b>
+      <span>Tugas</span>
+    </div>
+
+    <div class="stat">
+      <b>5</b>
+      <span>Pelajaran</span>
+    </div>
+
+    <div class="stat">
+      <b>4</b>
+      <span>Perlengkapan</span>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <h2>⚠️ Prioritas hari ini</h2>
+
+  <div class="task">
+    <input type="checkbox">
+    <div>
+      <b>Tugas Matematika</b>
+      <div class="small">Dikumpulkan hari ini</div>
+    </div>
+  </div>
+
+  <div class="task">
+    <input type="checkbox">
+    <div>
+      <b>Belajar IPA</b>
+      <div class="small">Target 30 menit</div>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <h2>🎒 Persiapan besok</h2>
+
+  <div class="task">
+    <input type="checkbox">
+    <div>Buku IPA</div>
+  </div>
+
+  <div class="task">
+    <input type="checkbox">
+    <div>Buku Matematika</div>
+  </div>
+
+  <div class="task">
+    <input type="checkbox">
+    <div>Alat tulis</div>
+  </div>
+
+  <div class="task">
+    <input type="checkbox">
+    <div>Perlengkapan olahraga</div>
+  </div>
+</div>
+
+<div class="card">
+  <h2>✨ Fitur SCHOOFY</h2>
+
+  <div class="menu">
+
+    <button onclick="showPage('tugas')">
+      <span class="icon">📝</span>
+      Tugas
+    </button>
+
+    <button onclick="showPage('jadwal')">
+      <span class="icon">📅</span>
+      Jadwal
+    </button>
+
+    <button onclick="showPage('tas')">
+      <span class="icon">🎒</span>
+      Smart Bag
+    </button>
+
+    <button onclick="showPage('belajar')">
+      <span class="icon">📚</span>
+      Belajar
+    </button>
+
+    <button onclick="showPage('lamtim')">
+      <span class="icon">🌾</span>
+      Lamtim Corner
+    </button>
+
+    <button onclick="showPage('eco')">
+      <span class="icon">♻️</span>
+      Eco Challenge
+    </button>
+
+  </div>
+</div>
+
+</section>
+
+
+<!-- TUGAS -->
+<section id="tugas" class="page">
+
+<button class="back" onclick="showPage('home')">← Kembali</button>
+
+<div class="card">
+  <h2>📝 Tugas Saya</h2>
+
+  <input id="taskInput" placeholder="Nama tugas">
+
+  <input id="deadlineInput" type="date">
+
+  <button class="primary" onclick="addTask()">
+    + Tambah Tugas
+  </button>
+</div>
+
+<div class="card">
+  <h2>Daftar Tugas</h2>
+  <div id="taskList">
+    <div class="task">
+      <input type="checkbox">
+      <div>
+        <b>Latihan Matematika</b>
+        <div class="small">Deadline hari ini</div>
+      </div>
+    </div>
+
+    <div class="task">
+      <input type="checkbox">
+      <div>
+        <b>Rangkuman IPA</b>
+        <div class="small">Deadline besok</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</section>
+
+
+<!-- JADWAL -->
+<section id="jadwal" class="page">
+
+<button class="back" onclick="showPage('home')">← Kembali</button>
+
+<div class="card">
+  <h2>📅 Jadwal Pelajaran</h2>
+
+  <div class="info">
+    <b>Senin</b><br>
+    Matematika • IPA • Bahasa Indonesia
+  </div>
+
+  <div class="info">
+    <b>Selasa</b><br>
+    IPS • Bahasa Inggris • PJOK
+  </div>
+
+  <div class="info">
+    <b>Rabu</b><br>
+    IPA • Matematika • Seni Budaya
+  </div>
+
+  <div class="info">
+    <b>Kamis</b><br>
+    Bahasa Indonesia • IPS • Informatika
+  </div>
+
+  <div class="info">
+    <b>Jumat</b><br>
+    PAI • Bahasa Lampung • PJOK
+  </div>
+</div>
+
+</section>
+
+
+<!-- SMART BAG -->
+<section id="tas" class="page">
+
+<button class="back" onclick="showPage('home')">← Kembali</button>
+
+<div class="card">
+  <h2>🎒 Smart Bag</h2>
+
+  <p class="small">
+    Checklist perlengkapan sekolahmu sebelum berangkat.
+  </p>
+
+  <div class="task">
+    <input type="checkbox">
+    <div>Buku pelajaran</div>
+  </div>
+
+  <div class="task">
+    <input type="checkbox">
+    <div>LKS</div>
+  </div>
+
+  <div class="task">
+    <input type="checkbox">
+    <div>Alat tulis</div>
+  </div>
+
+  <div class="task">
+    <input type="checkbox">
+    <div>Penggaris</div>
+  </div>
+
+  <div class="task">
+    <input type="checkbox">
+    <div>Perlengkapan olahraga</div>
+  </div>
+
+  <div class="task">
+    <input type="checkbox">
+    <div>Perlengkapan praktikum</div>
+  </div>
+</div>
+
+<div class="card">
+  <h2>💡 Rekomendasi</h2>
+
+  <p>
+    Berdasarkan jadwal besok, jangan lupa membawa
+    buku IPA dan perlengkapan olahraga.
+  </p>
+</div>
+
+</section>
+
+
+<!-- BELAJAR -->
+<section id="belajar" class="page">
+
+<button class="back" onclick="showPage('home')">← Kembali</button>
+
+<div class="card">
+  <h2>📚 Target Belajar</h2>
+
+  <div class="task">
+    <input type="checkbox">
+    <div>
+      <b>Belajar IPA</b>
+      <div class="small">30 menit</div>
+    </div>
+  </div>
+
+  <div class="task">
+    <input type="checkbox">
+    <div>
+      <b>Latihan Matematika</b>
+      <div class="small">10 soal</div>
+    </div>
+  </div>
+
+  <div class="task">
+    <input type="checkbox">
+    <div>
+      <b>Membaca IPS</b>
+      <div class="small">20 menit</div>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <h2>📊 Progress Minggu Ini</h2>
+
+  <p>65% target sudah tercapai.</p>
+
+  <div class="progress">
+    <div></div>
+  </div>
+</div>
+
+</section>
+
+
+<!-- LAMTIM -->
+<section id="lamtim" class="page">
+
+<button class="back" onclick="showPage('home')">← Kembali</button>
+
+<div class="card">
+  <h2>🌾 Lamtim Corner</h2>
+
+  <p>
+    Ruang belajar untuk mengenal budaya, lingkungan,
+    sejarah, dan potensi Lampung Timur.
+  </p>
+</div>
+
+<div class="card">
+  <h2>🐘 Kenali Daerahmu</h2>
+
+  <div class="info">
+    <b>Way Kambas</b>
+    <p class="small">
+      Salah satu kawasan konservasi yang terkenal
+      di Lampung Timur.
+    </p>
+  </div>
+
+  <div class="info">
+    <b>Budaya Lampung</b>
+    <p class="small">
+      Kenali bahasa, adat, seni, dan tradisi daerah.
+    </p>
+  </div>
+
+  <div class="info">
+    <b>Potensi Daerah</b>
+    <p class="small">
+      Pelajari pertanian, lingkungan, wisata,
+      dan potensi masyarakat Lampung Timur.
+    </p>
+  </div>
+</div>
+
+</section>
+
+
+<!-- ECO -->
+<section id="eco" class="page">
+
+<button class="back" onclick="showPage('home')">← Kembali</button>
+
+<div class="card">
+  <h2>♻️ Eco Challenge</h2>
+
+  <p>Yuk lakukan kebiasaan kecil untuk lingkungan!</p>
+
+  <div class="task">
+    <input type="checkbox">
+    <div>
+      <b>Membawa tumbler</b>
+      <div class="small">+10 poin</div>
+    </div>
+  </div>
+
+  <div class="task">
+    <input type="checkbox">
+    <div>
+      <b>Memilah sampah</b>
+      <div class="small">+10 poin</div>
+    </div>
+  </div>
+
+  <div class="task">
+    <input type="checkbox">
+    <div>
+      <b>Membersihkan kelas</b>
+      <div class="small">+20 poin</div>
+    </div>
+  </div>
+
+  <div class="info">
+    🌱 Total poin: <b>40</b>
+  </div>
+</div>
+
+</section>
+
+</main>
+
+
+<nav>
+
+<button class="active" onclick="showPage('home')">
+  <span>🏠</span>
+  Home
+</button>
+
+<button onclick="showPage('tugas')">
+  <span>📝</span>
+  Tugas
+</button>
+
+<button onclick="showPage('tas')">
+  <span>🎒</span>
+  Smart Bag
+</button>
+
+<button onclick="showPage('belajar')">
+  <span>📚</span>
+  Belajar
+</button>
+
+</nav>
+
+
+<script>
+
+function showPage(page){
+
+  document.querySelectorAll('.page').forEach(function(section){
+    section.classList.remove('active');
+  });
+
+  document.getElementById(page).classList.add('active');
+
+  window.scrollTo({
+    top:0,
+    behavior:'smooth'
+  });
+}
+
+
+function addTask(){
+
+  const input=document.getElementById('taskInput');
+  const deadline=document.getElementById('deadlineInput');
+
+  if(input.value.trim()===''){
+    alert('Tulis nama tugas terlebih dahulu.');
+    return;
+  }
+
+  const list=document.getElementById('taskList');
+
+  const task=document.createElement('div');
+  task.className='task';
+
+  task.innerHTML=
+  '<input type="checkbox">' +
+  '<div><b>' +
+  input.value +
+  '</b><div class="small">Deadline: ' +
+  (deadline.value || 'belum ditentukan') +
+  '</div></div>';
+
+  list.appendChild(task);
+
+  input.value='';
+  deadline.value='';
+
+  alert('Tugas berhasil ditambahkan!');
+
+}
+
+</script>
 
 </body>
 </html>
